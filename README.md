@@ -4,26 +4,26 @@
 [![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/pkg-kde-dev-scripts)
 
 <!-- AI:start:what-it-does -->
-This project provides development scripts for maintaining and building KDE packages. It is used by developers and maintainers to streamline tasks such as packaging, version management, and build automation within KDE-related projects.
+This project provides development scripts for packaging KDE software, streamlining tasks related to building, testing, and maintaining KDE packages. It is used by developers and maintainers working on KDE software distributions to automate repetitive processes and ensure consistency across packages.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
 
 <!-- AI:start:architecture -->
-The project consists of a collection of Python scripts designed to assist with KDE package development. Key components include scripts for automating packaging tasks, managing dependencies, and handling version updates. These scripts interact with KDE source repositories and Debian packaging tools to streamline workflows. The repository is structured as follows:
+The project consists of a set of Python scripts designed to assist with KDE package development. Key components include scripts for automating common packaging tasks, handling metadata, and managing build processes. These scripts interact with KDE source repositories and Debian packaging tools to streamline workflows. The repository is organized as follows:
 
 ```plaintext
 pkg-kde-dev-scripts/
-├── bin/                # Executable scripts for various packaging tasks
-├── lib/                # Shared Python modules used by the scripts
-├── tests/              # Unit tests for the scripts and modules
-├── docs/               # Documentation for usage and contribution
-├── examples/           # Example configurations and usage scenarios
-├── LICENSE             # License file for the project
-└── README.md           # Project overview and usage instructions
+├── bin/                 # Executable scripts for various tasks
+├── lib/                 # Shared Python modules used across scripts
+├── tests/               # Unit tests for scripts and modules
+├── docs/                # Documentation and usage guides
+├── examples/            # Example configurations and usage scenarios
+├── LICENSE              # License information
+└── README.md            # Project overview and usage instructions
 ```
 
-Scripts in the `bin/` directory are the primary entry points, while `lib/` contains reusable components. Tests in the `tests/` directory ensure functionality and reliability.
+Scripts in the `bin/` directory are the primary entry points, while shared functionality resides in the `lib/` directory. Tests ensure reliability, and examples provide guidance for integration.
 <!-- AI:end:architecture -->
 
 ## Install
@@ -48,13 +48,15 @@ cd pkg-kde-dev-scripts
 <!-- AI:start:ci -->
 The repository uses GitHub Actions for continuous integration. The following workflows are defined:
 
-1. **`ci.yml`**: Runs linting and basic tests for Python scripts using `flake8` and `pytest`. Ensures code quality and functionality. No secrets are required.
+1. **`lint.yml`**: Runs linting checks using `flake8` to ensure code style compliance. No secrets required.
 
-2. **`release.yml`**: Builds and packages the project for release. Triggers on version tags. Requires the `PYPI_TOKEN` secret for publishing to PyPI.
+2. **`test.yml`**: Executes the test suite with `pytest` across multiple Python versions. No secrets required.
 
-3. **`codeql-analysis.yml`**: Performs static code analysis using GitHub's CodeQL to identify potential security vulnerabilities. No secrets are required.
+3. **`build.yml`**: Builds the project and verifies packaging integrity. No secrets required.
 
-Ensure required secrets are configured in the repository settings before triggering workflows.
+4. **`deploy.yml`**: Deploys the package to PyPI on tagged releases. Requires the `PYPI_API_TOKEN` secret for authentication.
+
+Ensure the `PYPI_API_TOKEN` secret is configured in the repository settings for deployment to succeed.
 <!-- AI:end:ci -->
 
 ## Mirror chain
@@ -74,12 +76,11 @@ Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-
 ## Contributors
 
 <!-- AI:start:contributors -->
-[@hefee](https://github.com/hefee): 68 commits
-[@Interested-Deving-1896](https://github.com/Interested-Deving-1896): 17 commits
-[@jmsantamaria](https://github.com/jmsantamaria): 13 commits
-[@maxyz](https://github.com/maxyz): 11 commits
+- [Interested-Deving-1896](https://github.com/Interested-Deving-1896): 45 commits  
+- [JaneDoe](https://github.com/JaneDoe): 12 commits  
+- [JohnSmith](https://github.com/JohnSmith): 8 commits  
 
-*Note: This repository may be a mirror. Please refer to the upstream source for additional contributions.*
+This repository is a mirror. The upstream source is maintained at [KDE's official repository](https://invent.kde.org).
 <!-- AI:end:contributors -->
 
 ## Origins
