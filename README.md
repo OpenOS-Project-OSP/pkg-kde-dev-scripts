@@ -4,7 +4,7 @@
 [![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/pkg-kde-dev-scripts)
 
 <!-- AI:start:what-it-does -->
-This project provides development scripts for packaging KDE software, streamlining tasks related to building, testing, and maintaining KDE packages. It is used by developers and maintainers working on KDE software distributions to automate repetitive processes and ensure consistency across packages.
+This project provides a collection of development scripts for managing and automating tasks related to KDE package maintenance. It addresses common challenges faced by developers and maintainers working with KDE packaging workflows, such as source package building, dependency management, and version control integration.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
