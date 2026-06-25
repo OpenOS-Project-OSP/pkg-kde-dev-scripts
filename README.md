@@ -10,20 +10,27 @@ This project provides a collection of development scripts for managing and autom
 ## Architecture
 
 <!-- AI:start:architecture -->
-The project consists of a set of Python scripts designed to assist with KDE package development. Key components include scripts for automating common packaging tasks, handling metadata, and managing build processes. These scripts interact with KDE source repositories and Debian packaging tools to streamline workflows. The repository is organized as follows:
+The project consists of a collection of Python scripts and shell utilities designed to assist with KDE package development and maintenance. The scripts automate tasks such as building source packages, managing Debian control files, handling debug symbol migrations, and working with KDE trunk repositories. The components interact through shared functionality encapsulated in `function_collection`, which provides common utilities used across multiple scripts.
+
+The repository structure is flat, with all scripts located at the top level. Each script serves a specific purpose, and they can be used independently or in combination, depending on the workflow requirements.
 
 ```plaintext
-pkg-kde-dev-scripts/
-├── bin/                 # Executable scripts for various tasks
-├── lib/                 # Shared Python modules used across scripts
-├── tests/               # Unit tests for scripts and modules
-├── docs/                # Documentation and usage guides
-├── examples/            # Example configurations and usage scenarios
-├── LICENSE              # License information
-└── README.md            # Project overview and usage instructions
+.
+├── README.md                # Project documentation
+├── build-source-packages    # Script for building source packages
+├── ddeb_migration.py        # Handles debug symbol migration (Python 2)
+├── ddeb_migration3.py       # Handles debug symbol migration (Python 3)
+├── do-all                   # Executes a series of predefined tasks
+├── edit-control-all         # Edits Debian control files for all packages
+├── function_collection      # Shared utility functions
+├── group_breaks.py          # Groups package breaks (Python script)
+├── mergechanges-all         # Merges changelogs across packages
+├── snarf-i386-kdetrunk      # Retrieves i386 KDE trunk packages
+├── snarf-orig-kdetrunk      # Retrieves original KDE trunk packages
+├── snarf-orig-local         # Retrieves local original packages
+├── snarf-packages-git       # Retrieves packages from Git repositories
+└── snarf-source-kdetrunk    # Retrieves source packages from KDE trunk
 ```
-
-Scripts in the `bin/` directory are the primary entry points, while shared functionality resides in the `lib/` directory. Tests ensure reliability, and examples provide guidance for integration.
 <!-- AI:end:architecture -->
 
 ## Install
