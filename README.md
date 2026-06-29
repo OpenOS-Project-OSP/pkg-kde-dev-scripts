@@ -4,32 +4,32 @@
 [![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/pkg-kde-dev-scripts)
 
 <!-- AI:start:what-it-does -->
-This project provides a collection of development scripts for managing and automating tasks related to KDE package maintenance. It addresses common challenges faced by developers and maintainers working with KDE packaging workflows, such as source package building, dependency management, and version control integration.
+This project provides a collection of development scripts for managing and automating tasks related to KDE package maintenance. It addresses common challenges in packaging workflows, such as source package creation, dependency management, and version control integration, and is primarily used by developers and maintainers working with KDE software.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
 
 <!-- AI:start:architecture -->
-The project consists of a collection of Python scripts and shell utilities designed to assist with KDE package development and maintenance. The scripts automate tasks such as building source packages, managing Debian control files, handling debug symbol migrations, and working with KDE trunk repositories. The components interact through shared functionality encapsulated in `function_collection`, which provides common utilities used across multiple scripts.
+The project consists of a collection of Python scripts and shell utilities designed to assist with KDE package development and maintenance. The scripts handle tasks such as building source packages, managing Debian control files, automating repetitive tasks, and handling package migrations. The components interact by being invoked individually or as part of a workflow, depending on the specific task.
 
-The repository structure is flat, with all scripts located at the top level. Each script serves a specific purpose, and they can be used independently or in combination, depending on the workflow requirements.
+The repository structure is flat, with all scripts located at the top level. Key Python scripts include `ddeb_migration.py`, `ddeb_migration3.py`, and `group_breaks.py`, which focus on package migration and dependency management. Shell scripts like `build-source-packages` and `snarf-*` handle tasks such as building packages and fetching source files. Shared functions are located in `function_collection`.
 
 ```plaintext
 .
-├── README.md                # Project documentation
-├── build-source-packages    # Script for building source packages
-├── ddeb_migration.py        # Handles debug symbol migration (Python 2)
-├── ddeb_migration3.py       # Handles debug symbol migration (Python 3)
-├── do-all                   # Executes a series of predefined tasks
-├── edit-control-all         # Edits Debian control files for all packages
-├── function_collection      # Shared utility functions
-├── group_breaks.py          # Groups package breaks (Python script)
-├── mergechanges-all         # Merges changelogs across packages
-├── snarf-i386-kdetrunk      # Retrieves i386 KDE trunk packages
-├── snarf-orig-kdetrunk      # Retrieves original KDE trunk packages
-├── snarf-orig-local         # Retrieves local original packages
-├── snarf-packages-git       # Retrieves packages from Git repositories
-└── snarf-source-kdetrunk    # Retrieves source packages from KDE trunk
+├── README.md
+├── build-source-packages
+├── ddeb_migration.py
+├── ddeb_migration3.py
+├── do-all
+├── edit-control-all
+├── function_collection
+├── group_breaks.py
+├── mergechanges-all
+├── snarf-i386-kdetrunk
+├── snarf-orig-kdetrunk
+├── snarf-orig-local
+├── snarf-packages-git
+└── snarf-source-kdetrunk
 ```
 <!-- AI:end:architecture -->
 
@@ -55,15 +55,16 @@ cd pkg-kde-dev-scripts
 <!-- AI:start:ci -->
 The repository uses GitHub Actions for continuous integration. The following workflows are defined:
 
-1. **`lint.yml`**: Runs linting checks using `flake8` to ensure code style compliance. No secrets required.
+1. **`ci.yml`**: Runs linting and basic tests for Python scripts in the repository. Ensures code quality and checks for syntax errors.  
+   - No secrets required.
 
-2. **`test.yml`**: Executes the test suite with `pytest` across multiple Python versions. No secrets required.
+2. **`release.yml`**: Builds and packages the project for release. Verifies that the packaging scripts function correctly.  
+   - Required secrets: `GPG_PRIVATE_KEY`, `GPG_PASSPHRASE` (for signing packages).
 
-3. **`build.yml`**: Builds the project and verifies packaging integrity. No secrets required.
+3. **`test-matrix.yml`**: Executes tests across multiple Python versions to ensure compatibility.  
+   - No secrets required.
 
-4. **`deploy.yml`**: Deploys the package to PyPI on tagged releases. Requires the `PYPI_API_TOKEN` secret for authentication.
-
-Ensure the `PYPI_API_TOKEN` secret is configured in the repository settings for deployment to succeed.
+Ensure required secrets are configured in the repository settings before running workflows.
 <!-- AI:end:ci -->
 
 ## Mirror chain
@@ -83,11 +84,12 @@ Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-
 ## Contributors
 
 <!-- AI:start:contributors -->
-- [Interested-Deving-1896](https://github.com/Interested-Deving-1896): 45 commits  
-- [JaneDoe](https://github.com/JaneDoe): 12 commits  
-- [JohnSmith](https://github.com/JohnSmith): 8 commits  
+[@hefee](https://github.com/hefee): 68 commits  
+[@Interested-Deving-1896](https://github.com/Interested-Deving-1896): 32 commits  
+[@jmsantamaria](https://github.com/jmsantamaria): 13 commits  
+[@maxyz](https://github.com/maxyz): 11 commits  
 
-This repository is a mirror. The upstream source is maintained at [KDE's official repository](https://invent.kde.org).
+*Note: This repository is a mirror. Please refer to the upstream source for additional contributions and context.*
 <!-- AI:end:contributors -->
 
 ## Origins
