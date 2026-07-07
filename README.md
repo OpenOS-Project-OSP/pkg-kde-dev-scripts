@@ -4,7 +4,7 @@
 [![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/pkg-kde-dev-scripts)
 
 <!-- AI:start:what-it-does -->
-This project provides a collection of development scripts for managing and automating tasks related to KDE package maintenance. It addresses common challenges in packaging workflows, such as source package creation, dependency management, and version control integration, and is primarily used by developers and maintainers working with KDE software.
+This project provides a collection of development scripts for managing and automating tasks related to KDE package maintenance. It addresses common challenges in packaging workflows, such as source package building, control file editing, and migration of debug symbol packages. It is primarily used by developers and maintainers working on KDE or related packaging systems.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
@@ -55,16 +55,13 @@ cd pkg-kde-dev-scripts
 <!-- AI:start:ci -->
 The repository uses GitHub Actions for continuous integration. The following workflows are defined:
 
-1. **`ci.yml`**: Runs linting and basic tests for Python scripts in the repository. Ensures code quality and checks for syntax errors.  
+1. **`ci.yml`**: Runs linting and tests for Python scripts. Ensures code quality and correctness.  
    - No secrets required.
 
-2. **`release.yml`**: Builds and packages the project for release. Verifies that the packaging scripts function correctly.  
-   - Required secrets: `GPG_PRIVATE_KEY`, `GPG_PASSPHRASE` (for signing packages).
+2. **`release.yml`**: Builds and packages the project for release. Verifies the packaging process.  
+   - Required secrets: `GPG_PRIVATE_KEY`, `GPG_PASSPHRASE`.
 
-3. **`test-matrix.yml`**: Executes tests across multiple Python versions to ensure compatibility.  
-   - No secrets required.
-
-Ensure required secrets are configured in the repository settings before running workflows.
+All workflows trigger on push and pull request events targeting the default branch.
 <!-- AI:end:ci -->
 
 ## Mirror chain
