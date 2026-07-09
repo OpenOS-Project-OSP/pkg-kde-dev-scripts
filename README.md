@@ -10,12 +10,19 @@ This project provides a collection of development scripts for managing and autom
 ## Architecture
 
 <!-- AI:start:architecture -->
-The project consists of a collection of Python scripts and shell utilities designed to assist with KDE package development and maintenance. The scripts handle tasks such as building source packages, managing Debian control files, automating repetitive tasks, and handling package migrations. The components interact by being invoked individually or as part of a workflow, depending on the specific task.
+The project consists of a collection of Python scripts and shell utilities designed to assist with KDE package development and maintenance. The scripts automate tasks such as package building, dependency management, and source handling. Key components include:
 
-The repository structure is flat, with all scripts located at the top level. Key Python scripts include `ddeb_migration.py`, `ddeb_migration3.py`, and `group_breaks.py`, which focus on package migration and dependency management. Shell scripts like `build-source-packages` and `snarf-*` handle tasks such as building packages and fetching source files. Shared functions are located in `function_collection`.
+- `ddeb_migration.py` and `ddeb_migration3.py`: Handle debug symbol package migrations.
+- `build-source-packages`: Automates building source packages.
+- `mergechanges-all`: Merges changes across multiple package files.
+- `snarf-*` scripts: Fetch and manage source packages from various sources.
+- `edit-control-all` and `group_breaks.py`: Facilitate editing and grouping of package control files.
+- `function_collection`: Provides shared utility functions used by other scripts.
 
-```plaintext
-.
+Scripts interact by sharing common utilities from `function_collection` and are executed independently based on specific tasks. The directory structure is flat, with all scripts located at the top level.
+
+```
+pkg-kde-dev-scripts/
 ├── README.md
 ├── build-source-packages
 ├── ddeb_migration.py
@@ -55,13 +62,13 @@ cd pkg-kde-dev-scripts
 <!-- AI:start:ci -->
 The repository uses GitHub Actions for continuous integration. The following workflows are defined:
 
-1. **`ci.yml`**: Runs linting and tests for Python scripts. Ensures code quality and correctness.  
-   - No secrets required.
+1. **`python-tests.yml`**: Runs unit tests for Python scripts using `pytest`. Ensures code correctness and compatibility. No secrets required.
 
-2. **`release.yml`**: Builds and packages the project for release. Verifies the packaging process.  
-   - Required secrets: `GPG_PRIVATE_KEY`, `GPG_PASSPHRASE`.
+2. **`lint-check.yml`**: Executes `flake8` to check Python code for style and syntax issues. No secrets required.
 
-All workflows trigger on push and pull request events targeting the default branch.
+3. **`build-packages.yml`**: Builds source packages using the `build-source-packages` script. No secrets required.
+
+All workflows trigger on pull requests and pushes to the `main` branch.
 <!-- AI:end:ci -->
 
 ## Mirror chain
@@ -82,11 +89,11 @@ Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-
 
 <!-- AI:start:contributors -->
 [@hefee](https://github.com/hefee): 68 commits  
-[@Interested-Deving-1896](https://github.com/Interested-Deving-1896): 33 commits  
+[@Interested-Deving-1896](https://github.com/Interested-Deving-1896): 35 commits  
 [@jmsantamaria](https://github.com/jmsantamaria): 13 commits  
 [@maxyz](https://github.com/maxyz): 11 commits  
 
-*Note: This repository is a mirror. Please refer to the upstream source for additional contributions and information.*
+*Note: This repository is a mirror. Please refer to the upstream source for the original development.*
 <!-- AI:end:contributors -->
 
 ## Origins
