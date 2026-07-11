@@ -1,7 +1,8 @@
 [update-readmes]   Mode: rewrite — migrating to template structure...
 # pkg-kde-dev-scripts
 
-[![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/pkg-kde-dev-scripts)
+[![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/pkg-kde-dev-scripts) [![KDE Eco](https://img.shields.io/badge/KDE%20Eco-certified-brightgreen?logo=kde&logoColor=white&style=flat-square)](https://eco.kde.org/) [![Blue Angel](https://img.shields.io/badge/Blue%20Angel-DE--UZ%20215-0055a4?style=flat-square)](https://www.blauer-engel.de/en/certification/criteria) [![Energy](https://api.green-coding.io/v1/ci/badge/get?repo=Interested-Deving-1896%2Fpkg-kde-dev-scripts&branch=main&workflow=eco-audit.yml)](https://metrics.green-coding.io/ci-index.html)
+
 
 <!-- AI:start:what-it-does -->
 This project provides a collection of development scripts for managing and automating tasks related to KDE package maintenance. It addresses common challenges in packaging workflows, such as source package building, control file editing, and migration of debug symbol packages. It is primarily used by developers and maintainers working on KDE or related packaging systems.
@@ -88,10 +89,10 @@ Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-
 ## Contributors
 
 <!-- AI:start:contributors -->
-[@hefee](https://github.com/hefee): 68 commits  
-[@Interested-Deving-1896](https://github.com/Interested-Deving-1896): 35 commits  
-[@jmsantamaria](https://github.com/jmsantamaria): 13 commits  
-[@maxyz](https://github.com/maxyz): 11 commits  
+[@hefee](https://github.com/hefee): 68 commits
+[@Interested-Deving-1896](https://github.com/Interested-Deving-1896): 35 commits
+[@jmsantamaria](https://github.com/jmsantamaria): 13 commits
+[@maxyz](https://github.com/maxyz): 11 commits
 
 *Note: This repository is a mirror. Please refer to the upstream source for the original development.*
 <!-- AI:end:contributors -->
@@ -107,6 +108,20 @@ _Original project — no upstream fork._
 <!-- AI:start:resources -->
 _No additional resource files found._
 <!-- AI:end:resources -->
+
+<!-- AI:start:accessibility -->
+This repo uses automated accessibility auditing via `check-accessibility.yml`.
+
+Checks include: CODEOWNERS ownership coverage, README screen-reader compatibility,
+WCAG 2.1 AA HTML compliance, audio overview (espeak-ng), and Braille output (liblouis).
+
+
+
+
+Run the [Check Accessibility](https://github.com/Interested-Deving-1896/pkg-kde-dev-scripts/actions/workflows/check-accessibility.yml)
+workflow to generate the first report and accessibility artifacts.
+See [DOCS/accessibility.md](https://github.com/Interested-Deving-1896/pkg-kde-dev-scripts/blob/main/DOCS/accessibility.md) for the full reference.
+<!-- AI:end:accessibility -->
 
 ## License
 
