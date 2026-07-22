@@ -5,39 +5,32 @@
 
 
 <!-- AI:start:what-it-does -->
-This project provides a collection of development scripts for managing and automating tasks related to KDE package maintenance. It addresses common challenges in packaging workflows, such as source package building, control file editing, and migration of debug symbol packages. It is primarily used by developers and maintainers working on KDE or related packaging systems.
+This project provides a collection of development scripts to assist in packaging KDE software. It addresses tasks such as source package building, dependency management, and migration of debug symbols, streamlining workflows for developers and maintainers working on KDE-related distributions.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
 
 <!-- AI:start:architecture -->
-The project consists of a collection of Python scripts and shell utilities designed to assist with KDE package development and maintenance. The scripts automate tasks such as package building, dependency management, and source handling. Key components include:
+The project consists of a collection of Python scripts and shell utilities designed to assist with KDE package development and maintenance. The scripts handle tasks such as source package building, changelog merging, and package migration. The components interact primarily through shared functionality encapsulated in `function_collection`, which provides reusable methods for common operations. Each script is standalone but may invoke shared functions or other scripts as needed.
 
-- `ddeb_migration.py` and `ddeb_migration3.py`: Handle debug symbol package migrations.
-- `build-source-packages`: Automates building source packages.
-- `mergechanges-all`: Merges changes across multiple package files.
-- `snarf-*` scripts: Fetch and manage source packages from various sources.
-- `edit-control-all` and `group_breaks.py`: Facilitate editing and grouping of package control files.
-- `function_collection`: Provides shared utility functions used by other scripts.
+The directory structure is flat, with all scripts located in the repository's root. Below is the directory layout:
 
-Scripts interact by sharing common utilities from `function_collection` and are executed independently based on specific tasks. The directory structure is flat, with all scripts located at the top level.
-
-```
-pkg-kde-dev-scripts/
-├── README.md
-├── build-source-packages
-├── ddeb_migration.py
-├── ddeb_migration3.py
-├── do-all
-├── edit-control-all
-├── function_collection
-├── group_breaks.py
-├── mergechanges-all
-├── snarf-i386-kdetrunk
-├── snarf-orig-kdetrunk
-├── snarf-orig-local
-├── snarf-packages-git
-└── snarf-source-kdetrunk
+```plaintext
+.
+├── README.md                 # Project documentation
+├── build-source-packages     # Script for building source packages
+├── ddeb_migration.py         # Python script for migrating debug packages
+├── ddeb_migration3.py        # Python 3 version of ddeb_migration
+├── do-all                    # Script to execute tasks across multiple packages
+├── edit-control-all          # Script for batch editing control files
+├── function_collection       # Shared utility functions
+├── group_breaks.py           # Python script for grouping package breaks
+├── mergechanges-all          # Script for merging changelogs
+├── snarf-i386-kdetrunk       # Script for handling i386 KDE trunk packages
+├── snarf-orig-kdetrunk       # Script for fetching original KDE trunk sources
+├── snarf-orig-local          # Script for fetching local original sources
+├── snarf-packages-git        # Script for fetching packages from Git
+├── snarf-source-kdetrunk     # Script for fetching KDE trunk sources
 ```
 <!-- AI:end:architecture -->
 
